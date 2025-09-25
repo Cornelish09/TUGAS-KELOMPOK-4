@@ -1,11 +1,3 @@
----
-title: Belajar NumPy — Array, Matriks, dan Operasi
-author: Daffwa (converted from DOCX)
-description: Konversi dari dokumen Word ke Markdown untuk GitHub.
-tags: [NumPy, Python, Array, Matriks, Tutorial]
----
-
-
 # Laporan Ahli: Menguasai Vektor, Matriks, dan Array Multidimensi dengan NumPy
 
 
