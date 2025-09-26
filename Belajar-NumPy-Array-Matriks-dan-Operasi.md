@@ -1,12 +1,11 @@
-# Laporan Ahli: Menguasai Vektor, Matriks, dan Array Multidimensi dengan NumPy
-
+# Vectors, Matrices, and  Multidimensional Arrays
 
 ## Pendahuluan
 
 
-### Tujuan Laporan
+### Tujuan Tugas
 
-Laporan ini bertujuan untuk membedah secara mendalam sintaks dan konsep fundamental dari pustaka (library) NumPy, dengan berpedoman pada materi yang disajikan dalam Bab 2 buku *Numerical Python*. Dokumen ini dirancang sebagai panduan komprehensif untuk membangun kemahiran dalam komputasi numerik dan pengolahan data, yang merupakan pilar utama dalam ilmu data dan rekayasa modern. Setiap topik akan diuraikan secara rinci, disertai dengan contoh kode yang berbobot namun mudah dipahami, untuk memastikan pemahaman yang kokoh dan aplikatif.
+Tugas ini bertujuan untuk membedah secara mendalam sintaks dan konsep fundamental dari pustaka (library) NumPy, dengan berpedoman pada materi yang disajikan dalam Bab 2 buku *Numerical Python*. Tugas ini dirancang sebagai panduan komprehensif untuk membangun kemahiran dalam komputasi numerik dan pengolahan data, yang merupakan pilar utama dalam ilmu data dan rekayasa modern.
 
 ### Mengapa NumPy?
 
