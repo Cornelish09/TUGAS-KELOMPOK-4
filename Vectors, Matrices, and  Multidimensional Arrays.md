@@ -9,11 +9,11 @@ Tugas ini bertujuan untuk membedah secara mendalam sintaks dan konsep fundamenta
 
 ### Mengapa NumPy?
 
-Dalam ekosistem komputasi ilmiah Python, NumPy memegang peranan sentral yang tak tergantikan. Ia menyediakan objek array multidimensi, ndarray, yang menjadi fondasi bagi hampir semua pustaka lain di bidang ini, termasuk SciPy, Pandas, dan Scikit-learn. Dibandingkan dengan struktur data bawaan Python seperti list, ndarray menawarkan keunggulan signifikan untuk data numerik. list Python adalah wadah heterogen yang fleksibel, tetapi fleksibilitas ini harus dibayar dengan kinerja yang lebih lambat karena setiap elemen disimpan sebagai objek Python terpisah yang bisa tersebar di memori. Sebaliknya, ndarray adalah wadah homogen (semua elemen memiliki tipe data yang sama) yang menyimpan data dalam satu blok memori yang berdekatan (contiguous). Struktur ini memungkinkan operasi matematika dilakukan dengan kecepatan yang mendekati bahasa terkompilasi seperti C atau Fortran.
+Dalam ekosistem komputasi ilmiah Python, NumPy memegang peranan sentral yang tak tergantikan. Ia menyediakan objek array multidimensi, ndarray, yang menjadi fondasi bagi hampir semua pustaka lain di bidang ini, termasuk SciPy, Pandas, dan Scikit-learn. Dibandingkan dengan struktur data bawaan Python seperti list, ndarray menawarkan keunggulan signifikan untuk data numerik. list Python adalah wadah heterogen yang fleksibel, tetapi fleksibilitas ini harus dibayar dengan kinerja yang lebih lambat karena setiap elemen disimpan sebagai objek Python terpisah yang bisa tersebar di memori. Sebaliknya, ndarray adalah wadah homogen (semua elemen memiliki tipe data yang sama) yang menyimpan data dalam satu blok memori yang berdekatan (contiguous).
 
 ### Konsep Kunci: Vektorisasi
 
-Paradigma fundamental yang mendasari kekuatan NumPy adalah **vektorisasi**. Alih-alih menulis *loop* eksplisit untuk mengiterasi setiap elemen array—sebuah proses yang lambat dalam Python—vektorisasi memungkinkan kita untuk menerapkan operasi pada seluruh array sekaligus. Operasi-operasi ini (misalnya, penjumlahan atau perkalian array) dieksekusi di balik layar oleh kode C atau Fortran yang sangat dioptimalkan. Hasilnya adalah kode yang tidak hanya jauh lebih cepat, tetapi juga lebih ringkas, lebih mudah dibaca, dan lebih mirip dengan notasi matematika standar. Konsep ini akan menjadi tema yang berulang dan kunci untuk memahami efisiensi di seluruh laporan ini.
+Paradigma fundamental yang mendasari kekuatan NumPy adalah vektorisasi. Alih-alih menulis *loop* eksplisit untuk mengiterasi setiap elemen array, sebuah proses yang lambat dalam Python vektorisasi memungkinkan kita untuk menerapkan operasi pada seluruh array sekaligus. Operasi-operasi ini (misalnya, penjumlahan atau perkalian array) dieksekusi di balik layar oleh kode C atau Fortran yang sangat dioptimalkan. Hasilnya adalah kode yang tidak hanya jauh lebih cepat, tetapi juga lebih ringkas, lebih mudah dibaca, dan lebih mirip dengan notasi matematika standar. Konsep ini akan menjadi tema yang berulang dan kunci untuk memahami efisiensi di seluruh laporan ini.
 
 ## 1. Mengenali Karakteristik Data (Objek ndarray)
 
@@ -21,8 +21,8 @@ Paradigma fundamental yang mendasari kekuatan NumPy adalah **vektorisasi**. Alih
 ### Fondasi NumPy: Objek ndarray
 
 Inti dari pustaka NumPy adalah objek ndarray, yang merupakan singkatan dari "N-dimensional array". Ini adalah sebuah wadah data multidimensi yang memiliki dua karakteristik utama yang membedakannya dari list Python:
-**Homogen**: Semua elemen di dalam ndarray harus memiliki tipe data yang sama. Keterbatasan ini adalah sumber kekuatannya, karena memungkinkan data disimpan secara padat dan efisien di memori.
-**Ukuran Tetap (Fixed-size)**: Setelah sebuah ndarray dibuat, ukurannya tidak dapat diubah. Operasi yang tampaknya mengubah ukuran, seperti menambahkan elemen, sebenarnya membuat array baru dan menyalin data lama ke dalamnya.
+Homogen: Semua elemen di dalam ndarray harus memiliki tipe data yang sama. Keterbatasan ini adalah sumber kekuatannya, karena memungkinkan data disimpan secara padat dan efisien di memori.
+Ukuran Tetap (Fixed-size): Setelah sebuah ndarray dibuat, ukurannya tidak dapat diubah. Operasi yang tampaknya mengubah ukuran, seperti menambahkan elemen, sebenarnya membuat array baru dan menyalin data lama ke dalamnya.
 Struktur yang kaku ini memungkinkan NumPy untuk melakukan optimisasi tingkat rendah yang tidak mungkin dilakukan pada list Python yang dinamis.
 
 ### Metadata: Atribut-Atribut Array
@@ -414,8 +414,8 @@ print(A[:2, 1:])
 ```
 ### Konsep Kritis: Views vs. Copies
 
-Saat melakukan *slicing* dasar, NumPy tidak membuat salinan data. Sebaliknya, ia membuat sebuah **view**, yaitu objek ndarray baru yang menunjuk ke data yang sama di memori dengan array asli.
-**Implikasi**: Mengubah nilai dalam *view* akan **mengubah array asli**. Ini adalah fitur optimisasi yang kuat karena menghindari penyalinan data yang mahal, tetapi bisa menjadi sumber bug yang sulit dilacak jika tidak disadari.
+Saat melakukan *slicing* dasar, NumPy tidak membuat salinan data. Sebaliknya, ia membuat sebuah view, yaitu objek ndarray baru yang menunjuk ke data yang sama di memori dengan array asli.
+Implikasi: Mengubah nilai dalam *view* akan mengubah array asli. Ini adalah fitur optimisasi yang kuat karena menghindari penyalinan data yang mahal, tetapi bisa menjadi sumber bug yang sulit dilacak jika tidak disadari.
 
 Python
 
@@ -437,7 +437,7 @@ print(f"Array A tidak berubah oleh C_copy: {A}") # Output: [10 20 99 40 50]
 ```
 ### Pengindeksan Lanjutan (Fancy & Boolean)
 
-Berbeda dengan *slicing* dasar, pengindeksan lanjutan ini **selalu membuat salinan** data.
+Berbeda dengan *slicing* dasar, pengindeksan lanjutan ini selalu membuat salinan data.
 **Fancy Indexing**: Menggunakan list atau array integer untuk memilih elemen-elemen pada indeks tertentu, bahkan jika tidak berurutan.
 **Boolean Indexing**: Menggunakan array Boolean dengan shape yang sama sebagai "masker" untuk memfilter elemen. Hanya elemen di mana maskernya True yang akan dipilih. Ini adalah teknik yang sangat kuat untuk analisis data.
 
@@ -663,9 +663,9 @@ np.hstack((a, b)): Pintasan untuk np.concatenate di sepanjang axis=1 (menumpuk s
 ```
 ## Kesimpulan
 
-Penguasaan NumPy adalah langkah fundamental dan tak terhindarkan bagi siapa pun yang serius dalam bidang komputasi ilmiah, rekayasa, dan ilmu data menggunakan Python. Laporan ini telah menguraikan konsep-konsep inti yang disajikan dalam Bab 2 *Numerical Python*, mulai dari struktur dasar objek ndarray hingga teknik manipulasi dan operasi yang canggih.
+Penguasaan NumPy adalah langkah fundamental dan tak terhindarkan bagi siapa pun yang serius dalam bidang komputasi ilmiah, rekayasa, dan ilmu data menggunakan Python.
 Kekuatan sejati NumPy terletak pada tiga pilar utama:
 **Struktur Data yang Efisien**: ndarray menyediakan penyimpanan data numerik yang padat dan cepat diakses.
 **Vektorisasi**: Kemampuan untuk melakukan operasi batch pada seluruh array menggantikan *loop* Python yang lambat, menghasilkan peningkatan kinerja yang dramatis.
 **Broadcasting**: Mekanisme cerdas dan hemat memori yang memungkinkan operasi intuitif pada array dengan bentuk yang berbeda.
-Dengan memahami konsep-konsep ini—termasuk atribut array, tipe data, berbagai metode pembuatan, perbedaan antara operasi *element-wise* dan aljabar linear, serta teknik pengindeksan dan manipulasi—Anda kini memiliki fondasi yang kokoh. Pengetahuan ini tidak hanya memungkinkan Anda untuk menulis kode numerik yang lebih cepat dan bersih, tetapi juga merupakan prasyarat esensial untuk melangkah ke pustaka tingkat lebih tinggi dalam ekosistem Python, seperti SciPy untuk algoritma ilmiah yang lebih kompleks, Pandas untuk analisis data tabular, dan Scikit-learn untuk aplikasi *machine learning*.
+Dengan memahami konsep-konsep ini termasuk atribut array, tipe data, berbagai metode pembuatan, perbedaan antara operasi *element-wise* dan aljabar linear, serta teknik pengindeksan dan manipulasi. Pengetahuan ini tidak hanya memungkinkan untuk menulis kode numerik yang lebih cepat dan bersih, tetapi juga merupakan prasyarat esensial untuk melangkah ke pustaka tingkat lebih tinggi dalam ekosistem Python, seperti SciPy untuk algoritma ilmiah yang lebih kompleks, Pandas untuk analisis data tabular, dan Scikit-learn untuk aplikasi *machine learning*.
