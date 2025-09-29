@@ -1,1 +1,1 @@
-![Banner proyek](sampul kel 5.png)
+![Banner proyek](sampul_kel_5.png)
